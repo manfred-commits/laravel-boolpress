@@ -5,7 +5,7 @@ use Faker\Generator as Faker;
 use Illuminate\Support\Str;
 use App\Post;
 
-class PostsTableSeeder extends Seeder
+class PostTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -16,10 +16,10 @@ class PostsTableSeeder extends Seeder
     {
         for ($i=0; $i <5 ; $i++) { 
             $newPost = new Post();
-            $newPost->title = $faker->words(3, true);
-
+            $newPost->title = $faker->words(3,true);
+            
             $newPost->slug = Str::of($newPost->title)->slug('-');
-            $newPost->content = $faker->paragraphs();
+            $newPost->content = $faker->text(500);
             $newPost->save();
         }
     }
