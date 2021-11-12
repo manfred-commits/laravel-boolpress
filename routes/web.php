@@ -13,10 +13,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// rotte publiche
 Route::get('/', function () {
     return view('welcome');
 });
 
+// rotte autenticazione
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+// rotte area admin
+Route::middleware('auth')->namespace('Admin')->name('admin.')->prefix('admin')->group(function(){
+    Route::get('/home', 'HomeController@index')->name('home');
+    
+});
