@@ -21,7 +21,7 @@ Route::get('/', function () {
 // rotte autenticazione
 Auth::routes();
 
-// rotte area admin
+// rotte area admin con un prefisso pari a ../admin/..
 Route::middleware('auth')->namespace('Admin')->name('admin.')->prefix('admin')->group(function(){
     Route::get('/home', 'HomeController@index')->name('home');
     
