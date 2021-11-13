@@ -8,6 +8,13 @@ use Illuminate\Support\Str;
 use App\Post;
 class PostController extends Controller
 {
+
+
+    protected $validationRules=[
+        'title'=>'required|min:4|max:40',
+        'slug'=>'required|max:40',
+        'content'=>'required|min:10',
+    ];
     /**
      * Display a listing of the resource.
      *
@@ -36,7 +43,8 @@ class PostController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
+    {   
+        $request->validate($this->validationRules);
         $data=$request->all();
 
         $data['slug']=Str::of($data['title'])->slug('-');
@@ -74,7 +82,8 @@ class PostController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Post $post)
-    {
+    {   
+        $request->validate($this->validationRules);
         $data=$request->all();
 
         $data['slug']=Str::of($data['title'])->slug('-');
