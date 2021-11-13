@@ -10,11 +10,11 @@
 
                     <div class="form-group">
                         <label for="exampleFormControlTextarea1" name="title">Title</label>
-                        <input class="form-control" type="text" name="title" placeholder="Insert title">
+                        <input class="form-control" type="text" name="title" placeholder="Insert title" value='{{old('title')}}'>
                     </div>
                     <div class="form-group">
                         <label for="exampleFormControlTextarea2" name="content">Contet</label>
-                        <textarea name="content" class="form-control" id="exampleFormControlTextarea2" rows="3" placeholder="Insert Content of the post"></textarea>
+                        <textarea name="content" class="form-control" id="exampleFormControlTextarea2" rows="3" placeholder="Insert Content of the post">{{old('content')}}</textarea>
                     </div>
                     
                     <button class="btn-primary btn px-3" type="submit">Invia Post</button>
