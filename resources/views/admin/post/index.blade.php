@@ -5,7 +5,12 @@
     <div class="row justify-content-center">
         <div class="col-md-12 col-xs-12">
             <div class="card">
-                <div class="card-header">{{ __('Dashboard') }} of all posts</div>
+                <div class="card-header d-flex justify-content-between">{{ __('Dashboard') }} of all posts
+                    <a href="{{route('admin.posts.create')}}" class="align-self-center">
+                        <button class="btn-primary btn px-3">Crea Post</button>                            
+                    </a>
+
+                </div>
 
                 <div class="card-body">
                     @foreach ($posts as $post)
@@ -15,6 +20,9 @@
                             <h4 class="mx-2"><strong>Content:</strong> <br>{{$post['content']}}</h4>
                             <a href="{{route('admin.posts.show',$post['id'])}}" class="align-self-center">
                                 <button class="btn-primary btn px-3">Visualizza Post</button>                            
+                            </a>
+                            <a href="{{route('admin.posts.edit',$post['id'])}}" class="align-self-center">
+                                <button class="btn-warning btn px-3">Modifica Post</button>                            
                             </a>
                         </div>
                     @endforeach

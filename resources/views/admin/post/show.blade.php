@@ -14,8 +14,7 @@
                     <div class="post-container">
                         <h4><strong>Title:</strong> {{$post['title']}}</h4>
                         <h4><strong>Slug:</strong> {{$post['slug']}}</h4>
-                        <h4><strong>Content:</strong> <br>{{$post['content']}}</h4>
-                        
+                        <h4><strong>Content:</strong> <br>{{$post['content']}}</h4>                        
                     </div>
                 </div>
                 
