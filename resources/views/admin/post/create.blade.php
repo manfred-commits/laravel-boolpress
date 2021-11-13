@@ -5,9 +5,6 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-
-
-
                 <form action="{{route('admin.posts.store')}}" method="POST">
                     @csrf
 
@@ -22,28 +19,6 @@
                     
                     <button class="btn-primary btn px-3" type="submit">Invia Post</button>
                 </form>
-
-
-
-
-
-
-
-
-                {{-- <div class="card-header d-flex justify-content-between">
-                    {{ __('Dashboard') }} of {{$post['title']}}
-                    <a href="{{route('admin.posts.index')}}">Back to previous section </a>
-                </div>
-
-                <div class="card-body">                    
-                    <div class="post-container">
-                        <h4><strong>Title:</strong> {{$post['title']}}</h4>
-                        <h4><strong>Slug:</strong> {{$post['slug']}}</h4>
-                        <h4><strong>Content:</strong> <br>{{$post['content']}}</h4>
-                        
-                    </div>
-                </div> --}}
-                
             </div>
         </div>
     </div>
