@@ -7,7 +7,12 @@
             <div class="card">
                 <div class="card-header d-flex justify-content-between">
                     {{ __('Dashboard') }} of {{$post['title']}}
-                    <a href="{{route('admin.posts.index')}}">Back to previous section </a>
+                    <div class="navigation-links">
+                        <a class="mr-2" href="{{route('admin.posts.index')}}">Back to previous section </a>
+                        <a href="{{route('admin.posts.edit',$post['id'])}}" class="align-self-center">
+                            Modifica Post                          
+                        </a>
+                    </div>
                 </div>
 
                 <div class="card-body">                    
