@@ -41,7 +41,7 @@ class PostController extends Controller
 
         $data['slug']=Str::of($data['title'])->slug('-');
         Post::create($data);
-        return redirect()->route('admin.posts.index');
+        return redirect()->route('admin.posts.index')->with('success',"Il post {$data['title']} è stato creato");
     }
 
     /**
@@ -79,7 +79,7 @@ class PostController extends Controller
 
         $data['slug']=Str::of($data['title'])->slug('-');
         $post->update($data);
-        return redirect()->route('admin.posts.show',compact('post'));
+        return redirect()->route('admin.posts.show',compact('post'))->with('success',"Il post '{$post['title']}' è stato aggiornato");
     }
 
     /**
