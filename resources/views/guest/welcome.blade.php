@@ -16,18 +16,18 @@
         </div>
     @endif
 
-    <div class="content">
-        <div class="title m-b-md">
+    <div class="content d-flex flex-wrap">
+        <div class="title col-12 m-b-md">
             Boolpress
         </div>
         
-        <div class="links d-flex">
+        <div class="links col mx-auto my-3 d-flex">
             @if (Route::has('login'))
                 
                 @auth
                     
                 <a class="dropdown-item" href="{{route('admin.home') }}">Go to Back Office</a>
-                <a class="dropdown-item" href="{{route('admin.home') }}">Go to Front Office</a>
+                <a class="dropdown-item" href="{{route('blog.index') }}">Go to Front Office</a>
 
                 {{-- logout link --}}
                 <a class="dropdown-item" href="{{ route('logout') }}"
@@ -45,7 +45,7 @@
                     @if (Route::has('register'))
                     <a class="dropdown-item" href="{{ route('register') }}">Register</a>
                     @endif
-                    <a class="dropdown-item" href="{{route('admin.home') }}">Go to Front Office</a>
+                    <a class="dropdown-item" href="{{route('blog.index') }}">Go to Front Office</a>
                     <a class="dropdown-item" href="{{route('admin.home') }}">Go to Back Office</a>
 
                     
@@ -54,5 +54,7 @@
             @endif
         </div>
     </div>
+
+
 </div>
 @endsection
