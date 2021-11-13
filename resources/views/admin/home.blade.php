@@ -15,6 +15,21 @@
                     @endif
 
                     {{ __('You are logged in!') }}
+
+                    <ul class="list-group mt-3 ">
+                        <li class="list-group-item">
+                            <a href="{{route('admin.posts.index')}}"><h4>Access post section</h4></a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="{{route('admin.posts.index')}}"><h4>Something</h4></a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="{{route('admin.posts.index')}}"><h4>Something</h4></a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="{{route('admin.posts.index')}}"><h4>Something</h4></a>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
