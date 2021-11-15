@@ -23,7 +23,7 @@ Auth::routes();
 
 // rotte area admin con un prefisso pari a ../admin/..
 Route::middleware('auth')->namespace('Admin')->name('admin.')->prefix('admin')->group(function(){
-    Route::get('/home', 'HomeController@index')->name('home');
+    Route::get('/', 'HomeController@index')->name('home');
     // crud post controller for Post, put in admin to make it private
     Route::resource('posts', 'PostController');
     
