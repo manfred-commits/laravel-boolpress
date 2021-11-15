@@ -12,7 +12,7 @@ class PostController extends Controller
 
     protected $validationRules=[
         'title'=>'required|min:4|max:40',
-        'slug'=>'required|max:40',
+        'slug'=>'nullable|max:40',
         'content'=>'required|min:10',
     ];
     /**
@@ -46,10 +46,9 @@ class PostController extends Controller
     {   
         $request->validate($this->validationRules);
         $data=$request->all();
-
-        $data['slug']=Str::of($data['title'])->slug('-');
+        $data['slug'] = $this->isSlugPresent($request->title);
         Post::create($data);
-        return redirect()->route('admin.posts.index')->with('success',"Il post {$data['title']} è stato creato");
+        return redirect()->route('admin.posts.index')->with('success',"Il post '{$data['title']}' è stato creato");
     }
 
     /**
@@ -85,8 +84,7 @@ class PostController extends Controller
     {   
         $request->validate($this->validationRules);
         $data=$request->all();
-
-        $data['slug']=Str::of($data['title'])->slug('-');
+        $data['slug'] = $this->isSlugPresent($request->title);
         $post->update($data);
         return redirect()->route('admin.posts.show',compact('post'))->with('success',"Il post '{$post['title']}' è stato aggiornato");
     }
@@ -101,5 +99,17 @@ class PostController extends Controller
     {
         $post->delete();
         return redirect()->route('admin.posts.index')->with('success',"Il post {$post['id']} è stato eliminato");
+    }
+    private function isSlugPresent($title){
+        
+        $slug=Str::of($title)->slug('-');
+        $postExists= Post::where("slug", $slug)->first();
+        $count=2;
+        while($postExists){
+            $slug=Str::of($title)->slug('-')."-{$count}";
+            $postExists= Post::where("slug", $slug)->first();            
+            $count++;
+        }
+        return $slug;
     }
 }
