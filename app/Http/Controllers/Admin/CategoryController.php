@@ -81,7 +81,15 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        //
+        $validation=$this->validationRules;
+        // added validation exception in case of same name
+        $validation["name"]=$validation["name"].",{$category['id']}";
+        // validation of $request
+        $request->validate($validation);
+        $data=$request->all();
+        $data['slug'] = Str::of($data['name'])->slug('-');
+        $category->update($data);
+        return redirect()->route('admin.categories.show',compact('category'))->with('success',"Il post '{$category['name']}' è stato aggiornato");
     }
 
     /**
