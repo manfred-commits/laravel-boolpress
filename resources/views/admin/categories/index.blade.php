@@ -5,9 +5,9 @@
     <div class="row justify-content-center">
         <div class="col-md-12 col-xs-12 col">
             <div class="card">
-                <div class="card-header d-flex justify-content-between">{{ __('Dashboard') }} of all posts
+                <div class="card-header d-flex justify-content-between">{{ __('Dashboard') }} of all Categories
                     <a href="{{route('admin.categories.create')}}" class="align-self-center">
-                        <button class="btn-primary btn px-3">Crea Post</button>                            
+                        <button class="btn-primary btn px-3">Crea Categoria</button>                            
                     </a>
 
                 </div>
@@ -25,16 +25,16 @@
                             <h4 class="col "><strong>Name:</strong><br> {{$category['name']}}</h4>
                             <h4 class="col"><strong>Slug:</strong><br> {{$category['slug']}}</h4>                            
                             <div class="btns d-flex flex-column align-items-center">
-                                <a href="{{route('admin.posts.show',$category['id'])}}" class="m-1">
-                                    <button class="btn-primary btn px-3">Visualizza Post</button>                            
+                                <a href="{{route('admin.categories.show',$category['id'])}}" class="m-1">
+                                    <button class="btn-primary btn px-3">Visualizza Categoria</button>                            
                                 </a>
-                                <a href="{{route('admin.posts.edit',$category['id'])}}" class="m-1">
-                                    <button class="btn-warning btn px-3">Modifica Post</button>                            
+                                <a href="{{route('admin.categories.edit',$category['id'])}}" class="m-1">
+                                    <button class="btn-warning btn px-3">Modifica Categoria</button>                            
                                 </a>
-                                <form action="{{route('admin.posts.destroy',$category)}}" method="POST">
+                                <form action="{{route('admin.categories.destroy',$category)}}" method="POST">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn-danger btn px-3">Elimina Post</button>
+                                <button type="submit" class="btn-danger btn px-3">Elimina Categoria</button>
                                 </form>
                             </div>
                         </div>
