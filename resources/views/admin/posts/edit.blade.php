@@ -26,30 +26,23 @@
                             <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
                     </div>
+                    <div class="form-group">
+                        <label for="category_id">Categoria</label>
+                        <select name="category_id" class="form-control">
+                            <option value="">Seleziona una categoria</option>
+                            @foreach ($categories as $category)
+                            <option {{old("category_id")!= null && old("category_id")==$category['id'] || isset($post['category']) && $post["category"]["id"] == $category['id'] ? "selected" : null}} value="{{$category['id']}}">{{$category['name']}}</option>
+                                
+                            @endforeach
+                        </select>
+                        @error('category_id')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
+                    </div>
                     
                     <button class="btn-primary btn px-3" type="submit">Update Post</button>
                 </form>
 
-
-
-
-
-
-
-
-                {{-- <div class="card-header d-flex justify-content-between">
-                    {{ __('Dashboard') }} of {{$post['title']}}
-                    <a href="{{route('admin.posts.index')}}">Back to previous section </a>
-                </div>
-
-                <div class="card-body">                    
-                    <div class="post-container">
-                        <h4><strong>Title:</strong> {{$post['title']}}</h4>
-                        <h4><strong>Slug:</strong> {{$post['slug']}}</h4>
-                        <h4><strong>Content:</strong> <br>{{$post['content']}}</h4>
-                        
-                    </div>
-                </div> --}}
                 
             </div>
         </div>
