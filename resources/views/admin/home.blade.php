@@ -21,7 +21,7 @@
                             <a href="{{route('admin.posts.index')}}"><h4>Access post section</h4></a>
                         </li>
                         <li class="list-group-item">
-                            <a href="{{route('admin.posts.index')}}"><h4>Something</h4></a>
+                            <a href="{{route('admin.categories.index')}}"><h4>Access categories section</h4></a>
                         </li>
                         <li class="list-group-item">
                             <a href="{{route('admin.posts.index')}}"><h4>Something</h4></a>
