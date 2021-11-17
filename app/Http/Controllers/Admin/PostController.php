@@ -15,6 +15,7 @@ class PostController extends Controller
         'title'=>'required|min:4|max:40',
         'slug'=>'nullable|max:40',
         'content'=>'required|min:10',
+        'category_id'=>'nullable|exists:categories,id'
     ];
     /**
      * Display a listing of the resource.

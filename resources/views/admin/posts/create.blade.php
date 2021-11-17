@@ -23,7 +23,7 @@
                         @enderror
                     </div>
                     <div class="form-group">
-                        <label for="category_id" name="name">Categoria</label>
+                        <label for="category_id">Categoria</label>
                         <select name="category_id" class="form-control">
                             <option value="">Seleziona una categoria</option>
                             @foreach ($categories as $category)
@@ -31,7 +31,7 @@
                                 
                             @endforeach
                         </select>
-                        @error('content')
+                        @error('category_id')
                             <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
                     </div>
