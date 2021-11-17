@@ -72,8 +72,10 @@ class PostController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit(Post $post)
-    {
-        return view('admin.posts.edit', compact('post'));
+    {   
+        $categories= Category::all();
+
+        return view('admin.posts.edit', compact("post","categories"));
     }
 
     /**
