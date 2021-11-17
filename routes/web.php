@@ -26,5 +26,6 @@ Route::middleware('auth')->namespace('Admin')->name('admin.')->prefix('admin')->
     Route::get('/', 'HomeController@index')->name('home');
     // crud post controller for Post, put in admin to make it private
     Route::resource('posts', 'PostController');
+    Route::resource('categories', 'CategoryController');
     
 });
