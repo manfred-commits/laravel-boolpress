@@ -10,6 +10,6 @@ class Post extends Model
 
     // method with the entity with which we need to establish a relation
     public function category(){
-        return $this->belongsTo("App/Category");
+        return $this->belongsTo("App\Category");
     }
 }

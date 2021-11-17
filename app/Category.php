@@ -10,6 +10,6 @@ class Category extends Model
 
     // method with the entity with which we need to establish a relation
     public function posts(){
-        return $this->hasMany("App/Post");
+        return $this->hasMany("App\Post");
     }
 }
