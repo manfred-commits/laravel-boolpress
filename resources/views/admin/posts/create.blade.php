@@ -22,6 +22,19 @@
                             <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
                     </div>
+                    <div class="form-group">
+                        <label for="category_id" name="name">Categoria</label>
+                        <select name="category_id" class="form-control">
+                            <option value="">Seleziona una categoria</option>
+                            @foreach ($categories as $category)
+                            <option value="{{$category['id']}}">{{$category['name']}}</option>
+                                
+                            @endforeach
+                        </select>
+                        @error('content')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
+                    </div>
                     
                     <button class="btn-primary btn px-3" type="submit">Invia Post</button>
                 </form>
