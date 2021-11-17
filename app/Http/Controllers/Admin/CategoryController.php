@@ -10,7 +10,7 @@ use App\Category;
 class CategoryController extends Controller
 {   
     protected $validationRules=[
-        'name'=>'required|min:4|max:40',
+        'name'=>'required|min:4|max:40|unique:categories,name',
     ];
     /**
      * Display a listing of the resource.
@@ -30,7 +30,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.categories.create');
     }
 
     /**
@@ -41,7 +41,12 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate($this->validationRules);
+        $newCategory= new Category();
+        $newCategory->fill($request->all());
+        $newCategory->slug=Str::of($newCategory['name'])->slug('-');
+        $newCategory->save();
+        return redirect()->route('admin.categories.index')->with('success',"La categoria '{$newCategory['name']}' è stata creata");
     }
 
     /**
