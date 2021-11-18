@@ -17,7 +17,8 @@ class PostController extends Controller
         'title'=>'required|min:4|max:40',
         'slug'=>'nullable|max:40',
         'content'=>'required|min:10',
-        'category_id'=>'nullable|exists:categories,id'
+        'category_id'=>'nullable|exists:categories,id',
+        'tags'=>'exists:tags,id'
     ];
     /**
      * Display a listing of the resource.
@@ -51,10 +52,13 @@ class PostController extends Controller
     public function store(Request $request)
     {   
         $request->validate($this->validationRules);
-        $data=$request->all();
-        $data['slug'] = $this->isSlugPresent($request->title);
-        Post::create($data);
-        return redirect()->route('admin.posts.index')->with('success',"Il post '{$data['title']}' è stato creato");
+        $newPost= new Post();
+        $newPost->fill($request->all());
+        $newPost->slug = $this->isSlugPresent($request->title);
+        $newPost->save();
+
+        $newPost->tags()->attach($request->tags);
+        return redirect()->route('admin.posts.index')->with('success',"Il post '{$newPost['title']}' è stato creato");
     }
 
     /**
