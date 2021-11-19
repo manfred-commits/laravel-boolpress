@@ -81,8 +81,8 @@ class PostController extends Controller
     public function edit(Post $post)
     {   
         $categories= Category::all();
-
-        return view('admin.posts.edit', compact("post","categories"));
+        $tags= Tag::all();
+        return view('admin.posts.edit', compact("post","categories","tags"));
     }
 
     /**
@@ -95,10 +95,14 @@ class PostController extends Controller
     public function update(Request $request, Post $post)
     {   
         $request->validate($this->validationRules);
-        $data=$request->all();
-        $data['slug'] = $this->isSlugPresent($request->title);
-        $post->update($data);
-        return redirect()->route('admin.posts.show',compact('post'))->with('success',"Il post '{$post['title']}' è stato aggiornato");
+        if($post->title != $request->title) {
+            $post->slug = $this->getSlug($request->title);
+        }
+        $post->fill($request->all());
+        $post->save();
+
+        $post->tags()->sync($request->tags);
+        return redirect()->route('admin.posts.index')->with('success',"Il post '{$post['title']}' è stato aggiornato");
     }
 
     /**
