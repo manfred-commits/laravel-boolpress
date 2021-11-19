@@ -24,11 +24,23 @@
                         <div class="post-container pt-2 pb-2 mb-5 d-lg-flex flex-wrap align-items-start">
                             <h4 class="col col-lg-1"><strong>Title:</strong><br> {{$post['title']}}</h4>
                             <h4 class="col col-lg-1"><strong>Slug:</strong><br> {{$post['slug']}}</h4>
-                            <h4 class="col col-lg-6"><strong>Content:</strong> <br>{{$post['content']}}</h4>
+                            <h4 class="col col-lg-4"><strong>Content:</strong> <br>{{$post['content']}}</h4>
                             <h4 class="col col-lg-2"><strong>Category:</strong><br> {{isset($post['category']['name']) ? $post['category']['name'] : ""}}</h4>                            
+                            <div class="col-lg-2 col">
+                                <h3 >Tags:</h3> 
+                                @if (count($post['tags'])>0)
+                                    @foreach ($post['tags'] as $tag)
+                                    <span class="badge badge-primary">
+                                        {{$tag["name"]}}
+                                    </span>                                            
+                                    @endforeach
+                                    
+                                @endif                          
+                            </div>
                             <div class="btns d-flex flex-column align-items-center">
                                 <a href="{{route('admin.posts.show',$post['id'])}}" class="m-1">
-                                    <button class="btn-primary btn px-3">Visualizza Post</button>                            
+                                    <button class="btn-primary btn px-3">Visualizza Post</button>            
+                                                    
                                 </a>
                                 <a href="{{route('admin.posts.edit',$post['id'])}}" class="m-1">
                                     <button class="btn-warning btn px-3">Modifica Post</button>                            
