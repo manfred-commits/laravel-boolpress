@@ -22,6 +22,7 @@
         </div>
         
         <div class="links col mx-auto my-3 d-flex">
+            {{-- login condition to be executed in case of validated login --}}
             @if (Route::has('login'))
                 
                 @auth
@@ -40,6 +41,7 @@
                     @csrf
                 </form> 
 
+                {{-- home menu in case of user not logged in --}}
                 @else
                     <a class="dropdown-item" href="{{ route('login') }}">Login</a>
                     @if (Route::has('register'))

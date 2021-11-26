@@ -9,6 +9,7 @@ use App\Post;
 use App\Category;
 class CategoryController extends Controller
 {   
+    // validation rule variable
     protected $validationRules=[
         'name'=>'required|min:4|max:40|unique:categories,name',
     ];
